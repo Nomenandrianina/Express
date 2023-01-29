@@ -58,6 +58,15 @@ router.post("/client/paiement", async (req, res) => {
     }
   });
 
+  router.post("/financier/valide/paiement", async (req, res) => {
+    try {
+      const car = await Car.findByIdAndUpdate(req.body.idcar,  { $set:{etat: '2'} });
+      const paie = await Paiement.findOnedAndUpdate({Car: req.body.idcar},  { $set:{etat: '2'} });
+    } catch (error) {
+      res.status(400).json({ error });
+    }
+  });
+
 
 
 
