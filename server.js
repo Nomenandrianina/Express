@@ -19,8 +19,6 @@ var allowCrossDomain = function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Cache-Control");
-
-    // intercept OPTIONS method
     if ('OPTIONS' == req.method) {
       res.send(200);
     }
@@ -29,7 +27,7 @@ var allowCrossDomain = function(req, res, next) {
     }
 };
 app.use(allowCrossDomain);
-app.use(cors(corsOptions)); 
+app.use(cors({origin: "*"})); 
 app.use(bodyParser.json({limit: '50mb'})); 
 app.use(bodyParser.urlencoded({
     limit: '50mb',    
