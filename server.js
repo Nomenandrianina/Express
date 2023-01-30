@@ -9,7 +9,7 @@ const pieceroutes = require('./controllers/piece_controller');
 
 const cors = require('cors');
 var corsOptions = {
-    origin: "http://localhost:4200"
+    origin: "https://main--peaceful-sherbet-6aeab3.netlify.app/"
 };
 const bodyParser = require("body-parser");
 const app = express();
