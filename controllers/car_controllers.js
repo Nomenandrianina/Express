@@ -65,6 +65,16 @@ router.post("/create_car", async (req, res) => {
     }
   });
 
+  router.post("/client/historique", async (req, res) =>{
+    try {
+      const car = await Car.findById(req.body.id);
+      const reparation = await Reparation.find({Car: car._id}).populate(["Car","Piece"]);
+      res.status(200).json({ status:200,reparation,car });
+    } catch (error) {
+      res.status(400).json({ error });
+    }
+  });
+
   router.post("/client/facture", async (req, res) =>{
     try {
       const car = await Car.findById(req.body.id);
